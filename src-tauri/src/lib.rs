@@ -1,5 +1,3 @@
-const G: f32 = 9.81;
-
 // dardo
 #[tauri::command]
 fn calc_x(v_0: f32, alpha: f32, t: f32) -> f32 {
