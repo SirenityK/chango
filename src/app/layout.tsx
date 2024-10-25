@@ -1,5 +1,6 @@
 import { NavRoute } from "@/components/navRoute";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
@@ -19,7 +20,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Mono vs. Dardo",
-  description: "Demostración interactiva del problema de tiro parabólico.",
+  description: "Demostración interactiva del problema del mono y el dardo.",
 };
 
 export default function RootLayout({
@@ -45,6 +46,7 @@ export default function RootLayout({
               <NavRoute href={"/"}>Inicio</NavRoute>
               <NavRoute href={"simulation"}>Simulación</NavRoute>
               <NavRoute href={"explanation"}>Explicación</NavRoute>
+              <ModeToggle />
             </nav>
             {children}
           </main>

@@ -164,10 +164,16 @@ export default function App() {
             x: {
               min: 0,
               max: Math.round(constants.xM * 1.5),
+              grid: {
+                color: "gray",
+              },
             },
             y: {
               min: 0,
               max: Math.round(constants.h * 1.5),
+              grid: {
+                color: "gray",
+              },
             },
           },
         }}
