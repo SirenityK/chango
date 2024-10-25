@@ -2,13 +2,13 @@ import Katex from "@/components/katex";
 
 export default function Explicacion() {
   return (
-    <div className="grid gap-4 my-10 mx-4">
-      <h1 className="text-4xl font-bold mb-6">
+    <div className="mx-4 my-10 grid gap-4">
+      <h1 className="mb-6 text-4xl font-bold">
         Demostración del Problema del Dardo y el Mono
       </h1>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Introducción</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Introducción</h2>
         <p>
           El problema del dardo y el mono es un clásico en la cinemática,
           propuesto en la Escuela Politécnica Superior de la Universidad de
@@ -20,7 +20,7 @@ export default function Explicacion() {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           Ecuaciones de Movimiento
         </h2>
         <ul className="list-disc pl-6">
@@ -56,7 +56,7 @@ export default function Explicacion() {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">
+        <h2 className="mb-2 text-2xl font-semibold">
           Ecuaciones de Movimiento
         </h2>
         <ul className="list-disc pl-6">
@@ -92,7 +92,7 @@ export default function Explicacion() {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Condición de Impacto</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Condición de Impacto</h2>
         <p>
           Queremos encontrar el instante <Katex math="t_1" /> en el que el dardo
           pasa por la posición horizontal <Katex math="X_m" /> del mono. Usamos
@@ -108,7 +108,7 @@ export default function Explicacion() {
           <Katex math="t_1 = \frac{X_m}{V_0 \cos(\theta)}" />
         </p>
 
-        <h3 className="text-xl font-semibold mt-4 mb-2">
+        <h3 className="mb-2 mt-4 text-xl font-semibold">
           Posición del Dardo en <Katex math="t_1" />
         </h3>
         <p>
@@ -126,7 +126,7 @@ export default function Explicacion() {
           <Katex math="y(t_1) = h - \frac{g}{2 V_0^2} \left(X_m^2 + h^2\right)" />
         </p>
 
-        <h3 className="text-xl font-semibold mt-4 mb-2">
+        <h3 className="mb-2 mt-4 text-xl font-semibold">
           Posición del Mono en <Katex math="t_1" />
         </h3>
         <p>
@@ -151,7 +151,7 @@ export default function Explicacion() {
           <Katex math="y_m(t_1) = h - \frac{g}{2 V_0^2} \left(X_m^2 + h^2\right)" />
         </p>
 
-        <h3 className="text-xl font-semibold mt-4 mb-2">
+        <h3 className="mb-2 mt-4 text-xl font-semibold">
           Comparación de las Posiciones
         </h3>
         <p>
@@ -175,7 +175,7 @@ export default function Explicacion() {
       </section>
 
       <section className="mb-6">
-        <h2 className="text-2xl font-semibold mb-2">Conclusión</h2>
+        <h2 className="mb-2 text-2xl font-semibold">Conclusión</h2>
         <p>
           El análisis muestra que el dardo siempre impactará al mono si ambos
           parten al mismo tiempo, independientemente de la velocidad inicial del

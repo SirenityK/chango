@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import Katex from "@/components/katex";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -13,19 +13,19 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
-import { Scatter } from "react-chartjs-2";
+import { invoke } from "@tauri-apps/api/core";
 import {
   Chart as ChartJS,
-  PointElement,
+  Legend,
   LinearScale,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-  LineElement,
 } from "chart.js";
+import { useEffect, useRef, useState } from "react";
+import { Scatter } from "react-chartjs-2";
 import { type ChartJSOrUndefined } from "../../../node_modules/react-chartjs-2/dist/types";
-import Katex from "@/components/katex";
-import { invoke } from "@tauri-apps/api/core";
 
 ChartJS.register(
   PointElement,
@@ -33,7 +33,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export default function App() {
@@ -172,7 +172,7 @@ export default function App() {
           },
         }}
       />
-      <div className="flex gap-4 md:[&_div]:flex-1 [&_div_p]:my-1 max-md:flex-col">
+      <div className="flex gap-4 max-md:flex-col md:[&_div]:flex-1 [&_div_p]:my-1">
         <div>
           <p>Distancia vertical inicial del mono</p>
           <Slider
@@ -298,14 +298,14 @@ export default function App() {
       <Separator orientation="horizontal" className="mt-4" />
       <div className="my-2">
         <h1 className="text-xl font-bold">Datos calculados:</h1>
-        <div className="flex gap-8 flex-wrap">
+        <div className="flex flex-wrap gap-8">
           <Katex math={`v_{0}=${constants.v0}\\frac{m}{s}`} />
           <Katex math={`x_{m}=${constants.xM}m`} />
           <Katex math={`h=${constants.h}m`} />
           <Katex math={`g=${g}\\frac{m}{s^2}`} />
           <Katex
             math={`\\alpha\\approx${((alpha * 180) / Math.PI).toFixed(
-              3
+              3,
             )}^\\circ`}
           />
           <Katex math={`\\text{Tiempo}=${t.toFixed(2)}\\text{s}`} />

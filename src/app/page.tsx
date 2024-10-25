@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col justify-center text-center gap-4 m-4">
+    <div className="m-4 flex flex-1 flex-col justify-center gap-4 text-center">
       <h1 className="text-4xl font-bold">
         <span>Tiro Parabólico: </span>
         <br className="md:hidden" />
@@ -14,7 +14,7 @@ export default function Home() {
         ¿Logrará el dardo alcanzar al mono que cae en el instante exacto del
         disparo?
       </p>
-      <div className="flex gap-4 justify-center">
+      <div className="flex justify-center gap-4">
         <Link href="/simulation">
           <Button>Ir a la Simulación</Button>
         </Link>

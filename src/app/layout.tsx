@@ -1,10 +1,10 @@
+import { NavRoute } from "@/components/navRoute";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
+import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
 import localFont from "next/font/local";
 import "./globals.css";
-import "katex/dist/katex.min.css";
-import { cn } from "@/lib/utils";
-import { NavRoute } from "@/components/navRoute";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,20 +28,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          `${geistSans.variable} ${geistMono.variable} antialiased`
+          `${geistSans.variable} ${geistMono.variable} antialiased`,
         )}
       >
-        <main className="flex flex-col h-screen [&:not(:first-child)]:m-4">
-          <nav className="flex items-center w-full min-h- top-0 px-6 my-2 backdrop-blur-sm justify-around">
-            <NavRoute href={"/"}>Inicio</NavRoute>
-            <NavRoute href={"simulation"}>Simulación</NavRoute>
-            <NavRoute href={"explanation"}>Explicación</NavRoute>
-          </nav>
-          {children}
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="flex h-screen flex-col [&:not(:first-child)]:m-4">
+            <nav className="top-0 my-2 flex w-full items-center justify-around px-6 backdrop-blur-sm">
+              <NavRoute href={"/"}>Inicio</NavRoute>
+              <NavRoute href={"simulation"}>Simulación</NavRoute>
+              <NavRoute href={"explanation"}>Explicación</NavRoute>
+            </nav>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
