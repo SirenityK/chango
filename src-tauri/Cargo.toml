@@ -1,10 +1,10 @@
 [package]
 name = "dardo-y-mono"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "Demostración interactiva del problema del mono y el dardo"
+authors = ["SirenityK"]
+license = "MIT"
+repository = "https://github.com/SirenityK/chango"
 edition = "2021"
 rust-version = "1.77.2"
 
