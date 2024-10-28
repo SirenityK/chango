@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
-import { invoke } from "@tauri-apps/api/core";
+import { commands } from "@/lib/bindings";
 import {
   Chart as ChartJS,
   Legend,
@@ -56,6 +56,9 @@ export default function App() {
 
   const chartRef = useRef<ChartJSOrUndefined<"scatter">>(null);
 
+  const [currentDSpeed, setCurrentDSpeed] = useState(0);
+  const [currentMSpeed, setCurrentMSpeed] = useState(0);
+
   const dardoFlow = async (alpha: number) => {
     const points = [];
     let t = 0,
@@ -63,8 +66,8 @@ export default function App() {
       y = 0;
 
     while (y >= 0 && x <= constants.xM * 1.5) {
-      x = await calcX(constants.v0, alpha, t);
-      y = await calcY(constants.v0, alpha, t, g);
+      x = await commands.calcX(constants.v0, alpha, t);
+      y = await commands.calcY(constants.v0, alpha, t, g);
       points.push({ x, y });
       t += 0.1;
     }
@@ -72,39 +75,23 @@ export default function App() {
     return points;
   };
 
-  const calcX = async (v0: number, alpha: number, t: number) =>
-    await invoke<number>("calc_x", { v0, alpha, t });
-  const calcY = async (v0: number, alpha: number, t: number, g: number) =>
-    await invoke<number>("calc_y", { v0, alpha, t, g });
-
   useEffect(() => {
     (async () => {
       let newAlpha: number;
       let newTime: number;
       if (restrictions) {
-        newAlpha = await invoke<number>("atan2", {
-          y: constants.h,
-          x: constants.xM,
-        });
-        newTime = await invoke<number>("calc_time", {
-          xM: constants.xM,
-          v0: constants.v0,
-          alpha: newAlpha,
-        });
+        newAlpha = await commands.atan2(constants.h, constants.xM);
+        newTime = await commands.calcTime(constants.xM, constants.v0, newAlpha);
       } else {
         newAlpha = alpha;
         newTime = t;
       }
       const newDardo = {
-        x: await calcX(constants.v0, newAlpha, newTime),
-        y: await calcY(constants.v0, newAlpha, newTime, g),
+        x: await commands.calcX(constants.v0, newAlpha, newTime),
+        y: await commands.calcY(constants.v0, newAlpha, newTime, g),
       };
 
-      const newMonoPos = await invoke<number>("monkey_y", {
-        h: constants.h,
-        time: newTime,
-        g: g,
-      });
+      const newMonoPos = await commands.monkeyY(constants.h, g, newTime);
 
       const path = await dardoFlow(newAlpha);
 
@@ -112,6 +99,14 @@ export default function App() {
         setAlpha(newAlpha);
         setTime(newTime);
       }
+
+      setCurrentDSpeed(
+        await commands.currentDardoSpeed(constants.v0, newAlpha, newTime, g),
+      );
+      setCurrentMSpeed(
+        await commands.currentMonoSpeed(constants.v0, g, newTime),
+      );
+
       setMonoPos(newMonoPos);
       setDardo(newDardo);
       setDardoPlot(path);
@@ -315,6 +310,12 @@ export default function App() {
             )}^\\circ`}
           />
           <Katex math={`\\text{Tiempo}=${t.toFixed(2)}\\text{s}`} />
+          <Katex
+            math={`\\text{Velocidad actual del dardo}=${currentDSpeed.toFixed(2)}\\frac{m}{s}`}
+          />
+          <Katex
+            math={`\\text{Velocidad actual del mono}=${currentMSpeed.toFixed(2)}\\frac{m}{s}`}
+          />
         </div>
       </div>
       {Math.abs(dardo.x - constants.xM) > 0.1 &&
