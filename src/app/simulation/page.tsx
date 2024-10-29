@@ -318,13 +318,12 @@ export default function App() {
           />
         </div>
       </div>
-      {Math.abs(dardo.x - constants.xM) > 0.1 &&
-      Math.abs(dardo.y - monoPos) > 0.1 ? (
-        <h1 className="text-xl font-bold text-red-500">El dardo no alcanza</h1>
-      ) : (
+      {Math.abs(dardo.y - monoPos) < 0.01 && dardo.y >= 0 ? (
         <h1 className="text-xl font-bold text-green-500">
           El dardo alcanza a disparar
         </h1>
+      ) : (
+        <h1 className="text-xl font-bold text-red-500">El dardo no alcanza</h1>
       )}
     </div>
   );
