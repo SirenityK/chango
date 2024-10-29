@@ -2,7 +2,6 @@ import { NavRoute } from "@/components/navRoute";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import "katex/dist/katex.min.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
