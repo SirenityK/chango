@@ -40,7 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="flex h-screen flex-col [&:not(:first-child)]:m-4">
+          <main className="flex h-screen flex-col">
             <nav className="top-0 my-2 flex w-full items-center justify-around px-6 backdrop-blur-sm">
               <NavRoute href={"/"}>Inicio</NavRoute>
               <NavRoute href={"simulation"}>Simulación</NavRoute>

@@ -1,4 +1,7 @@
 import Katex from "@/components/katex";
+import { Button } from "@/components/ui/button";
+import { ScrollText } from "lucide-react";
+import Link from "next/link";
 
 export default function Explicacion() {
   return (
@@ -183,6 +186,10 @@ export default function Explicacion() {
           a la misma aceleración gravitatoria, sincronizando sus trayectorias.
         </p>
       </section>
+      <Button className="mb-6 w-fit">
+        <ScrollText />
+        <Link href="survey">Ir al cuestionario</Link>
+      </Button>
     </div>
   );
 }
