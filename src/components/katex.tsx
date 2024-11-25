@@ -1,14 +1,20 @@
 import katex from "katex";
 import "katex/dist/katex.css";
 
-export default function Katex({ math }: { math: string }) {
+interface KatexProps {
+  tex: Parameters<typeof katex.renderToString>[0];
+  options?: Parameters<typeof katex.renderToString>[1];
+}
+
+export default function Katex({
+  tex: math,
+  options = { displayMode: false },
+}: KatexProps) {
   return (
     <span
       className="my-2"
       dangerouslySetInnerHTML={{
-        __html: katex.renderToString(math, {
-          displayMode: false,
-        }),
+        __html: katex.renderToString(math, options),
       }}
     />
   );

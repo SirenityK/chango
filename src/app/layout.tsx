@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Mono vs. Dardo",
-  description: "Demostración interactiva del problema del mono y el dardo.",
+  title: "Proyectos de física",
+  description: "Culerísimos proyectos de física hermano",
 };
 
 export default function RootLayout({
@@ -43,8 +43,8 @@ export default function RootLayout({
           <main className="flex h-screen flex-col">
             <nav className="top-0 my-2 flex w-full items-center justify-around px-6 backdrop-blur-sm">
               <NavRoute href={"/"}>Inicio</NavRoute>
-              <NavRoute href={"simulation"}>Simulación</NavRoute>
-              <NavRoute href={"explanation"}>Explicación</NavRoute>
+              <NavRoute href={"/chango"}>Chango</NavRoute>
+              <NavRoute href={"/periscope"}>Periscopio</NavRoute>
               <ModeToggle />
             </nav>
             {children}

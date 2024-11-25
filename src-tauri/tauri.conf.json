@@ -1,8 +1,8 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Dardo y mono",
-  "version": "0.4.0",
-  "identifier": "com.fisica.chango",
+  "productName": "Proyectos",
+  "version": "0.5.0",
+  "identifier": "com.fisica.projects",
   "build": {
     "frontendDist": "../out",
     "devUrl": "http://localhost:3000",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Dardo y mono",
+        "title": "Proyectos",
         "width": 800,
         "height": 600,
         "resizable": true,

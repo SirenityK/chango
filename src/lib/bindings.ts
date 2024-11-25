@@ -37,6 +37,19 @@ export const commands = {
   async angleToRadians(angle: number): Promise<number> {
     return await TAURI_INVOKE("angle_to_radians", { angle });
   },
+  async calculateMirrorPoints(
+    cx: number,
+    cy: number,
+    length: number,
+    angle: number,
+  ): Promise<[number, number, number, number]> {
+    return await TAURI_INVOKE("calculate_mirror_points", {
+      cx,
+      cy,
+      length,
+      angle,
+    });
+  },
 };
 
 /** user-defined events **/

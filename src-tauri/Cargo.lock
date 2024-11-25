@@ -615,21 +615,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dardo-y-mono"
-version = "0.4.0"
-dependencies = [
- "log",
- "serde",
- "serde_json",
- "specta",
- "specta-typescript",
- "tauri",
- "tauri-build",
- "tauri-plugin-log",
- "tauri-specta",
-]
-
-[[package]]
 name = "darling"
 version = "0.20.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2485,6 +2470,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f139b0662de085916d1fb67d2b4169d1addddda1919e696f3252b740b629986e"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "proyectos"
+version = "0.5.0"
+dependencies = [
+ "log",
+ "serde",
+ "serde_json",
+ "specta",
+ "specta-typescript",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-log",
+ "tauri-specta",
 ]
 
 [[package]]

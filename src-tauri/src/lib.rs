@@ -1,3 +1,7 @@
+mod periscope;
+
+use crate::periscope::calculate_mirror_points;
+
 #[cfg(debug_assertions)]
 use specta_typescript::Typescript;
 use tauri_specta::{collect_commands, Builder};
@@ -72,6 +76,7 @@ pub fn run() {
         current_dardo_speed,
         current_mono_speed,
         angle_to_radians,
+        calculate_mirror_points
     ]);
 
     #[cfg(debug_assertions)]
