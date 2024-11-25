@@ -1,0 +1,7 @@
+section {
+  @apply mb-6;
+}
+
+h2 {
+  @apply mb-2 text-2xl font-semibold;
+}
